@@ -15,13 +15,11 @@ public class MagicalScoreManager : MonoBehaviour {
 	public Text x;
 	public Text y;
 	public Text z;
-	//public Text w;
 
 	bool hasFixedJoint = true;
 
 	void Start () {
 		Input.gyro.enabled = true;
-		Debug.Log (scrole.GetComponent<FixedJoint> ().connectedBody);
 	}
 
 	void OnDisable(){
@@ -31,17 +29,16 @@ public class MagicalScoreManager : MonoBehaviour {
 
 	void Update () {
 		DownKeyCheck ();
+
+		x.text = RectTransformUtility.WorldToScreenPoint (Camera.main, scrole.transform.position).x.ToString ();
+		y.text = RectTransformUtility.WorldToScreenPoint (Camera.main, scrole.transform.position).y.ToString ();
+
 		/*
-		x.text = Input.gyro.attitude.x.ToString();
-		y.text = Input.gyro.attitude.y.ToString();
-		z.text = Input.gyro.attitude.z.ToString();
-		w.text = Input.gyro.attitude.w.ToString();
-		*/
-
-
+		// カメラのRotation
 		x.text = camera.transform.eulerAngles.x.ToString ();
 		y.text = camera.transform.eulerAngles.y.ToString ();
 		z.text = camera.transform.eulerAngles.z.ToString ();
+		*/
 	}
 
 	/// <summary>
