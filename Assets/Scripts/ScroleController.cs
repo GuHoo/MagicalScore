@@ -4,19 +4,45 @@ using UnityEngine;
 
 public class ScroleController : MonoBehaviour {
 
-	private const float MIN_SELECT_AREA_X = 470;
-	private const float MAX_SELECT_AREA_X = 550;
-	private const float MIN_SELECT_AREA_Y = 70;
-	private const float MAX_SELECT_AREA_Y = 160;
+	private const float SELECT_AREA_RANGE = 80;
+	private GameObject[] scroles;
 
-	// Use this for initialization
+
+	void Awake () {
+		scroles = GameObject.FindGameObjectsWithTag ("Scrole");
+	}
+
 	void Start () {
 		
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
-		
-		
+		CheckSclole ();
+	}
+
+	void CheckSclole () {
+		if (IsInSelectArea ()) {
+			scroles[0].GetComponent<Renderer>().material.color = Color.red;
+		} else {
+			scroles[0].GetComponent<Renderer>().material.color = Color.blue;
+		}
+	}
+
+	private bool IsInSelectArea () {
+		float screenCentorPointX = Screen.width / 2;
+		float screenCentorPointY = Screen.height / 2;
+		float maxSelectAreaX = screenCentorPointX + SELECT_AREA_RANGE / 2;
+		float minSelectAreaX = screenCentorPointX - SELECT_AREA_RANGE / 2;
+		float maxSelectAreaY = screenCentorPointY + SELECT_AREA_RANGE / 2;
+		float minSelectAreaY = screenCentorPointY - SELECT_AREA_RANGE / 2;
+		float scroleScreenPointX = RectTransformUtility.WorldToScreenPoint (Camera.main, scroles [0].transform.position).x;
+		float scroleScreenPointY = RectTransformUtility.WorldToScreenPoint (Camera.main, scroles [0].transform.position).y;
+
+		if (minSelectAreaX <= scroleScreenPointX && scroleScreenPointX <= maxSelectAreaX) {
+			if (minSelectAreaY <= scroleScreenPointY && scroleScreenPointY <= maxSelectAreaY) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
