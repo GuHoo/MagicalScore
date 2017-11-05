@@ -6,6 +6,8 @@ public class ScroleController : MonoBehaviour {
 
 	private const float SELECT_AREA_RANGE = 80;
 	private GameObject[] scroles;
+	private bool inSelectArea;
+	private bool hasFixedJoint = false;
 
 
 	void Awake () {
@@ -21,10 +23,23 @@ public class ScroleController : MonoBehaviour {
 	}
 
 	void CheckSclole () {
-		if (IsInSelectArea ()) {
-			scroles[0].GetComponent<Renderer>().material.color = Color.red;
+		inSelectArea = IsInSelectArea ();
+		if (! hasFixedJoint) {
+			if (inSelectArea) {
+				scroles[0].GetComponent<Renderer>().material.color = Color.red;	
+				if (Input.GetButtonDown ("Fire1")) {
+					scroles[0].AddComponent<FixedJoint> ();
+					scroles[0].GetComponent<FixedJoint> ().connectedBody = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Rigidbody>();
+					hasFixedJoint = true;
+				}
+			} else {
+				scroles [0].GetComponent<Renderer> ().material.color = Color.blue;
+			}
 		} else {
-			scroles[0].GetComponent<Renderer>().material.color = Color.blue;
+			if (Input.GetButtonDown ("Fire1")) {
+				Destroy (scroles [0].GetComponent<FixedJoint> ());
+				hasFixedJoint = false;
+			}
 		}
 	}
 

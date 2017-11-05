@@ -9,14 +9,11 @@ public class MagicalScoreManager : MonoBehaviour {
 
 	public MoverioUnityPlugin moverioUnityPlugin;
 
-	public GameObject camera;
 	public GameObject scrole;
 
 	public Text x;
 	public Text y;
 	public Text z;
-
-	bool hasFixedJoint = true;
 
 	void Start () {
 		Input.gyro.enabled = true;
@@ -32,13 +29,6 @@ public class MagicalScoreManager : MonoBehaviour {
 
 		x.text = RectTransformUtility.WorldToScreenPoint (Camera.main, scrole.transform.position).x.ToString ();
 		y.text = RectTransformUtility.WorldToScreenPoint (Camera.main, scrole.transform.position).y.ToString ();
-
-		/*
-		// カメラのRotation
-		x.text = camera.transform.eulerAngles.x.ToString ();
-		y.text = camera.transform.eulerAngles.y.ToString ();
-		z.text = camera.transform.eulerAngles.z.ToString ();
-		*/
 	}
 
 	/// <summary>
@@ -46,7 +36,6 @@ public class MagicalScoreManager : MonoBehaviour {
 	/// </summary>
 	void DownKeyCheck()
 	{
-		// 真ん中のボタン
 		if (Input.GetButtonDown("Fire1")) {
 			PushEnterKey ();
 		} else if (Input.GetKey (KeyCode.UpArrow)) {
@@ -64,14 +53,7 @@ public class MagicalScoreManager : MonoBehaviour {
 
 	private void PushEnterKey ()
 	{
-		if (hasFixedJoint) {
-			Destroy (scrole.GetComponent<FixedJoint> ());
-			hasFixedJoint = false;
-		} else {
-			scrole.AddComponent<FixedJoint> ();
-			scrole.GetComponent<FixedJoint> ().connectedBody = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Rigidbody>();
-			hasFixedJoint = true;
-		}
+
 	}
 
 	private void PushUpKey ()
