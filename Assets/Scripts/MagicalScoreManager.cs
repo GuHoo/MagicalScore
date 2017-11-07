@@ -25,10 +25,7 @@ public class MagicalScoreManager : MonoBehaviour {
 	}
 
 	void Update () {
-		DownKeyCheck ();
-
-		x.text = RectTransformUtility.WorldToScreenPoint (Camera.main, scrole.transform.position).x.ToString ();
-		y.text = RectTransformUtility.WorldToScreenPoint (Camera.main, scrole.transform.position).y.ToString ();
+		
 	}
 
 	/// <summary>
