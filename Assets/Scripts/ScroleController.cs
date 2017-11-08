@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScroleController : MonoBehaviour {
 
-	private const float SELECT_AREA_RANGE = 80;
+	private const float SELECT_AREA_RANGE = 200;
 	private GameObject[] scroles;
 	private bool inSelectArea;
 	private bool hasFixedJoint = false;
