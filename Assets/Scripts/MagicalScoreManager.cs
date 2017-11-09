@@ -10,10 +10,7 @@ public class MagicalScoreManager : MonoBehaviour {
 	public MoverioUnityPlugin moverioUnityPlugin;
 
 	public GameObject scrole;
-
-	public Text x;
-	public Text y;
-	public Text z;
+    public GameObject uGUI;
 
 	void Start () {
 		Input.gyro.enabled = true;
@@ -25,13 +22,13 @@ public class MagicalScoreManager : MonoBehaviour {
 	}
 
 	void Update () {
-		
-	}
+        DownKeyCheck();
+    }
 
-	/// <summary>
-	/// 押されたキーに応じた処理を実行する
-	/// </summary>
-	void DownKeyCheck()
+    /// <summary>
+    /// 押されたキーに応じた処理を実行する
+    /// </summary>
+    void DownKeyCheck()
 	{
 		if (Input.GetButtonDown("Fire1")) {
 			PushEnterKey ();
@@ -55,8 +52,8 @@ public class MagicalScoreManager : MonoBehaviour {
 
 	private void PushUpKey ()
 	{
-
-	}
+        uGUI.SetActive(true);
+    }
 
 	private void PushDownKey ()
 	{
