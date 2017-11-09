@@ -5,9 +5,12 @@ using UnityEngine;
 public class BookG : MonoBehaviour {
     private Animator animator;
     //int blendShapeCount;
+    SkinnedMeshRenderer smr;
+
 
     float blendOne = 0f;
     float blendSpeed = 1f;
+
 
     private void Awake() {
 
@@ -16,6 +19,7 @@ public class BookG : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        smr = GetComponentInChildren<SkinnedMeshRenderer>();
         animator = GetComponent<Animator>();
     }
 
@@ -34,5 +38,6 @@ public class BookG : MonoBehaviour {
         else {
             animator.SetBool("isClosing", false);
         }
+
     }
 }
