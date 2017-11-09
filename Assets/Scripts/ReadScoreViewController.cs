@@ -4,9 +4,9 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
 
-public class UGUIController : MonoBehaviour {
+public class ReadScoreViewController : MonoBehaviour {
 
-	public GameObject uGUI;
+	public GameObject readScoreViewController;
 	public GameObject toggleScrollTitle;
 	public GameObject content;
 
@@ -19,7 +19,7 @@ public class UGUIController : MonoBehaviour {
 	}
 		
 	public void ClickBackButton () {
-		uGUI.SetActive (false);
+        readScoreViewController.SetActive (false);
 	}
 
 	public void SetScoreTitle () {
