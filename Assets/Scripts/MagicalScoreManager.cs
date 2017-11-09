@@ -10,10 +10,7 @@ public class MagicalScoreManager : MonoBehaviour {
 	public MoverioUnityPlugin moverioUnityPlugin;
 
 	public GameObject scrole;
-
-	public Text x;
-	public Text y;
-	public Text z;
+    public GameObject uGUI;
 
 	void Start () {
 		Input.gyro.enabled = true;
@@ -25,25 +22,25 @@ public class MagicalScoreManager : MonoBehaviour {
 	}
 
 	void Update () {
-		
-	}
+        DownKeyCheck();
+    }
 
-	/// <summary>
-	/// 押されたキーに応じた処理を実行する
-	/// </summary>
-	void DownKeyCheck()
+    /// <summary>
+    /// 押されたキーに応じた処理を実行する
+    /// </summary>
+    void DownKeyCheck()
 	{
 		if (Input.GetButtonDown("Fire1")) {
 			PushEnterKey ();
-		} else if (Input.GetKey (KeyCode.UpArrow)) {
+		} else if (Input.GetKeyDown (KeyCode.UpArrow)) {
 			PushUpKey ();
-		} else if (Input.GetKey (KeyCode.DownArrow)) {
+		} else if (Input.GetKeyDown(KeyCode.DownArrow)) {
 			PushDownKey ();
-		} else if (Input.GetKey (KeyCode.LeftArrow)) {
+		} else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
 			PushLeftKey ();
-		} else if (Input.GetKey (KeyCode.RightArrow)) {
+		} else if (Input.GetKeyDown(KeyCode.RightArrow)) {
 			PushRightKey ();
-		} else if (Input.GetKey (KeyCode.Escape)) {
+		} else if (Input.GetKeyDown(KeyCode.Escape)) {
 			PushEscapeKey ();
 		}
 	}
@@ -55,8 +52,14 @@ public class MagicalScoreManager : MonoBehaviour {
 
 	private void PushUpKey ()
 	{
-
-	}
+        if (uGUI.activeSelf)
+        {
+            uGUI.SetActive(false);
+        } else
+        {
+            uGUI.SetActive(true);
+        }
+    }
 
 	private void PushDownKey ()
 	{
