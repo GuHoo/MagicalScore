@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 190871852}
   - component: {fileID: 190871855}
   m_Layer: 5
-  m_Name: UGUI
+  m_Name: ReadScorelView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -252,37 +252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de99495145216584190f99f155c6789a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uGUI: {fileID: 190871850}
-  toggleScrollTitle: {fileID: 1666163871669456, guid: e71486b7a75b4ee4993ea45195200522,
-    type: 2}
+  readScoreViewController: {fileID: 190871850}
+  toggleScrollTitle: {fileID: 0}
   content: {fileID: 1240174617}
---- !u!84 &199529111
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 1023
-  m_Height: 274
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &228809337
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,33 +453,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 590799644}
   m_Script: {fileID: 11500000, guid: 85246c46e116c0e44a1dce68634c495f, type: 3}
---- !u!84 &452241112
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 1023
-  m_Height: 274
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &484769695
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +594,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 190871855}
+      - m_Target: {fileID: 0}
         m_MethodName: GetScoreImage
         m_Mode: 1
         m_Arguments:
@@ -720,7 +665,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 499489942}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 511.5, y: 82.2, z: 0}
+  m_LocalPosition: {x: 511.5, y: 86.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 939355571}
@@ -952,8 +897,8 @@ MonoBehaviour:
   sourceCamera: {fileID: 511879559}
   outlineCamera: {fileID: 1394356066}
   outlineShaderMaterial: {fileID: 0}
-  renderTexture: {fileID: 199529111}
-  extraRenderTexture: {fileID: 452241112}
+  renderTexture: {fileID: 1526607362}
+  extraRenderTexture: {fileID: 1654588873}
 --- !u!114 &511879564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1512,7 +1457,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 190871855}
+      - m_Target: {fileID: 0}
         m_MethodName: ClickBackButton
         m_Mode: 1
         m_Arguments:
@@ -2399,7 +2344,7 @@ GameObject:
   - component: {fileID: 1366363407}
   - component: {fileID: 1366363406}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: ScoreSelectModeView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2469,7 +2414,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1366363405}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 511.5, y: 137, z: 0}
+  m_LocalPosition: {x: 511.5, y: 144.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2144299084}
@@ -2524,7 +2469,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 0
   m_RenderingPath: 1
-  m_TargetTexture: {fileID: 199529111}
+  m_TargetTexture: {fileID: 1526607362}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -2649,6 +2594,33 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!84 &1526607362
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 1023
+  m_Height: 289
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1585319027
 GameObject:
   m_ObjectHideFlags: 0
@@ -2716,6 +2688,33 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1585319027}
+--- !u!84 &1654588873
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 1023
+  m_Height: 289
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &2100246237
 GameObject:
   m_ObjectHideFlags: 0
@@ -2966,7 +2965,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2144299083}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 511.5, y: 137, z: 0}
+  m_LocalPosition: {x: 511.5, y: 144.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1585319028}
