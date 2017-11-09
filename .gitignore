@@ -31,3 +31,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Texture
+/Assets/Texture/sample*
