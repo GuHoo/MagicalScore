@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BookAnimation : MonoBehaviour {
-
+public class BookG : MonoBehaviour {
     private Animator animator;
-
+    //int blendShapeCount;
     SkinnedMeshRenderer smr;
+
 
     float blendOne = 0f;
     float blendSpeed = 1f;
@@ -33,15 +33,10 @@ public class BookAnimation : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.DownArrow)) {
             animator.SetBool("isClosing", true);
+
         }
         else {
             animator.SetBool("isClosing", false);
-        }
-
-        if (blendOne < 100f) {
-            smr.SetBlendShapeWeight(0, blendOne);
-            Debug.Log(blendOne);
-            blendOne += blendSpeed;
         }
 
     }
