@@ -32,15 +32,15 @@ public class MagicalScoreManager : MonoBehaviour {
 	{
 		if (Input.GetButtonDown("Fire1")) {
 			PushEnterKey ();
-		} else if (Input.GetKey (KeyCode.UpArrow)) {
+		} else if (Input.GetKeyDown (KeyCode.UpArrow)) {
 			PushUpKey ();
-		} else if (Input.GetKey (KeyCode.DownArrow)) {
+		} else if (Input.GetKeyDown(KeyCode.DownArrow)) {
 			PushDownKey ();
-		} else if (Input.GetKey (KeyCode.LeftArrow)) {
+		} else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
 			PushLeftKey ();
-		} else if (Input.GetKey (KeyCode.RightArrow)) {
+		} else if (Input.GetKeyDown(KeyCode.RightArrow)) {
 			PushRightKey ();
-		} else if (Input.GetKey (KeyCode.Escape)) {
+		} else if (Input.GetKeyDown(KeyCode.Escape)) {
 			PushEscapeKey ();
 		}
 	}
@@ -52,7 +52,13 @@ public class MagicalScoreManager : MonoBehaviour {
 
 	private void PushUpKey ()
 	{
-        uGUI.SetActive(true);
+        if (uGUI.activeSelf)
+        {
+            uGUI.SetActive(false);
+        } else
+        {
+            uGUI.SetActive(true);
+        }
     }
 
 	private void PushDownKey ()

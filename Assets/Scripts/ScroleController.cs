@@ -6,9 +6,9 @@ public class ScroleController : MonoBehaviour {
 
 	private const float SELECT_AREA_RANGE = 200;
 	private GameObject[] scores;
-	private bool inSelectArea;
+	private bool inSelectArea = false;
 	private bool hasFixedJoint = false;
-
+    private bool canSelectBook = false;
 
 	void Awake () {
         scores = GameObject.FindGameObjectsWithTag ("Score");
@@ -23,24 +23,35 @@ public class ScroleController : MonoBehaviour {
 	}
 
 	void CheckSclole () {
-		inSelectArea = IsInSelectArea ();
-		if (! hasFixedJoint) {
-			if (inSelectArea) {
-                //scores[0].GetComponent<Renderer>().material.color = Color.red;	
-                if (Input.GetButtonDown ("Fire1")) {
-                    scores[0].AddComponent<FixedJoint> ();
-                    scores[0].GetComponent<FixedJoint> ().connectedBody = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Rigidbody>();
-					hasFixedJoint = true;
-				}
-			} else {
-                //scores [0].GetComponent<Renderer> ().material.color = Color.blue;
+        if (canSelectBook)
+        {
+            inSelectArea = IsInSelectArea();
+            if (!hasFixedJoint)
+            {
+                if (inSelectArea)
+                {
+                    //scores[0].GetComponent<Renderer>().material.color = Color.red;	
+                    if (Input.GetButtonDown("Fire1"))
+                    {
+                        scores[0].AddComponent<FixedJoint>();
+                        scores[0].GetComponent<FixedJoint>().connectedBody = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Rigidbody>();
+                        hasFixedJoint = true;
+                    }
+                }
+                else
+                {
+                    //scores [0].GetComponent<Renderer> ().material.color = Color.blue;
+                }
             }
-        } else {
-			if (Input.GetButtonDown ("Fire1")) {
-				Destroy (scores[0].GetComponent<FixedJoint> ());
-				hasFixedJoint = false;
-			}
-		}
+            else
+            {
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    Destroy(scores[0].GetComponent<FixedJoint>());
+                    hasFixedJoint = false;
+                }
+            }
+        }
 	}
 
 	private bool IsInSelectArea () {
@@ -60,4 +71,10 @@ public class ScroleController : MonoBehaviour {
 		}
 		return false;
 	}
+
+    public void changeCanSelectBook ()
+    {
+        canSelectBook = !canSelectBook;
+        Debug.Log("やばい");
+    }
 }
