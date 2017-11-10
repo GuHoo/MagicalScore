@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using cakeslice;
 
 public class ScoreController : MonoBehaviour {
 
@@ -12,8 +13,8 @@ public class ScoreController : MonoBehaviour {
 	}
 
 	void Start () {
-		
-	}
+        this.gameObject.transform.Find("Book").gameObject.GetComponent<Outline>().enabled = false;
+    }
 
 	void Update () {
         ScoreControl();
@@ -30,7 +31,7 @@ public class ScoreController : MonoBehaviour {
     {
         if (IsInSelectArea ())
         {
-            //this.gameObject.transform.Find("Book").gameObject.GetComponent<Outline>();
+            this.gameObject.transform.Find("Book").gameObject.GetComponent<Outline>().enabled = true;
             if (Input.GetButtonDown("Fire1"))
             {
                 if (!this.gameObject.GetComponent<FixedJoint>())
@@ -43,7 +44,7 @@ public class ScoreController : MonoBehaviour {
             }
 
         } else {
-            //scores [0].GetComponent<Renderer> ().material.color = Color.blue;
+            this.gameObject.transform.Find("Book").gameObject.GetComponent<Outline>().enabled = false;
         }
     }
 
