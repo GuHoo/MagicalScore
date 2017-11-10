@@ -253,7 +253,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   readScoreViewController: {fileID: 190871850}
-  toggleScrollTitle: {fileID: 0}
+  toggleScrollTitlePrerfab: {fileID: 1666163871669456, guid: e71486b7a75b4ee4993ea45195200522,
+    type: 2}
   content: {fileID: 1240174617}
 --- !u!1 &228809337
 GameObject:
@@ -897,8 +898,8 @@ MonoBehaviour:
   sourceCamera: {fileID: 511879559}
   outlineCamera: {fileID: 1394356066}
   outlineShaderMaterial: {fileID: 0}
-  renderTexture: {fileID: 1526607362}
-  extraRenderTexture: {fileID: 1654588873}
+  renderTexture: {fileID: 1698289998}
+  extraRenderTexture: {fileID: 870602008}
 --- !u!114 &511879564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1381,6 +1382,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &870602008
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 1023
+  m_Height: 289
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &912540511
 GameObject:
   m_ObjectHideFlags: 0
@@ -2343,6 +2371,7 @@ GameObject:
   - component: {fileID: 1366363408}
   - component: {fileID: 1366363407}
   - component: {fileID: 1366363406}
+  - component: {fileID: 1366363410}
   m_Layer: 5
   m_Name: ScoreSelectModeView
   m_TagString: Untagged
@@ -2427,6 +2456,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1366363410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1366363405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d4265b1f0fdf6a4d9da9f221331924e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1394356065
 GameObject:
   m_ObjectHideFlags: 0
@@ -2469,7 +2509,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 0
   m_RenderingPath: 1
-  m_TargetTexture: {fileID: 1526607362}
+  m_TargetTexture: {fileID: 1698289998}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -2594,33 +2634,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!84 &1526607362
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 1023
-  m_Height: 289
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1585319027
 GameObject:
   m_ObjectHideFlags: 0
@@ -2688,7 +2701,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1585319027}
---- !u!84 &1654588873
+--- !u!84 &1698289998
 RenderTexture:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -2708,7 +2721,7 @@ RenderTexture:
   m_TextureSettings:
     serializedVersion: 2
     m_FilterMode: 1
-    m_Aniso: 1
+    m_Aniso: 0
     m_MipBias: 0
     m_WrapU: 1
     m_WrapV: 1
@@ -3015,7 +3028,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2144299086}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1366363410}
+        m_MethodName: ChangeButtonControlBookActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2144299086

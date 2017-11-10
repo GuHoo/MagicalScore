@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ReadScoreViewController : MonoBehaviour {
 
 	public GameObject readScoreViewController;
-	public GameObject toggleScrollTitle;
+	public GameObject toggleScrollTitlePrerfab;
 	public GameObject content;
 
 	void Start () {
@@ -27,7 +27,7 @@ public class ReadScoreViewController : MonoBehaviour {
 		DirectoryInfo directoryInfo = new DirectoryInfo(Application.persistentDataPath + "/Score");
 		for(int i = 0; i < directoryInfo.GetDirectories ().Length; i++) {
 			DirectoryInfo tmpDirInfo = directoryInfo.GetDirectories () [i];
-			toggleScrollTitleInstance = Instantiate(toggleScrollTitle);
+			toggleScrollTitleInstance = Instantiate(toggleScrollTitlePrerfab);
 			toggleScrollTitleInstance.GetComponentInChildren<Text>().text = tmpDirInfo.Name;
 			toggleScrollTitleInstance.transform.SetParent(content.transform);
 		}
