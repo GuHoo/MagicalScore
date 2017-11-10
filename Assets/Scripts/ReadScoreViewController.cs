@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class ReadScoreViewController : MonoBehaviour {
 
-	public GameObject readScoreViewController;
 	public GameObject toggleScrollTitlePrerfab;
 	public GameObject content;
 
@@ -15,11 +14,11 @@ public class ReadScoreViewController : MonoBehaviour {
 	}
 
 	void Update () {
-		
+
 	}
-		
-	public void ClickBackButton () {
-        readScoreViewController.SetActive (false);
+
+    public void ClickBackButton () {
+        this.gameObject.SetActive (false);
 	}
 
 	public void SetScoreTitle () {

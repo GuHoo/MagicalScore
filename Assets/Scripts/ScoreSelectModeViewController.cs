@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class ScoreSelectModeViewController : MonoBehaviour {
 
+    public GameObject scoreBook;
+    private ScoreController scoreController;
     private GameObject buttonControlBook;
     private GameObject buttonBackStandard;
 
     void Start () {
+        scoreController = scoreBook.GetComponent<ScoreController>();
 		buttonControlBook = transform.Find("ButtonControlBook").gameObject;
         buttonBackStandard = transform.Find("ButtonBackStandard").gameObject;
     }
@@ -20,11 +23,13 @@ public class ScoreSelectModeViewController : MonoBehaviour {
     {
          buttonControlBook.SetActive(false);
          buttonBackStandard.SetActive(true);
+         scoreController.setCanSelectBook(true);
     }
 
     public void ClickBackStandard()
     {
         buttonBackStandard.SetActive(false);
         buttonControlBook.SetActive(true);
+        scoreController.setCanSelectBook(false);
     }
 }

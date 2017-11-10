@@ -9,8 +9,7 @@ public class MagicalScoreManager : MonoBehaviour {
 
 	public MoverioUnityPlugin moverioUnityPlugin;
 
-	public GameObject scrole;
-    public GameObject uGUI;
+    public GameObject readlScoreView;
 
 	void Start () {
 		Input.gyro.enabled = true;
@@ -52,12 +51,12 @@ public class MagicalScoreManager : MonoBehaviour {
 
 	private void PushUpKey ()
 	{
-        if (uGUI.activeSelf)
+        if (readlScoreView.activeSelf)
         {
-            uGUI.SetActive(false);
+            readlScoreView.SetActive(false);
         } else
         {
-            uGUI.SetActive(true);
+            readlScoreView.SetActive(true);
         }
     }
 
