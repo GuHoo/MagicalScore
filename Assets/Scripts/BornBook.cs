@@ -17,24 +17,20 @@ public class BornBook : MonoBehaviour {
 
     void Start () {
         animator = GetComponent<Animator>();
-        //animator.SetBool("isInitialize", true);
+        animator.SetBool("isInitialize", true);
     }
-	
-	void Update () {
-        if (continueFlag) {
+
+    void Update()
+    {
+        if (continueFlag)
+        {
             float angleX = Mathf.LerpAngle(minAngleX, maxAngleX, Time.time);
             float angleZ = Mathf.LerpAngle(minAngleZ, maxAngleZ, Time.time);
             transform.eulerAngles = new Vector3(angleX, 180, angleZ);
-
-
-            /*
-            transform.Rotate(new Vector3(0, -60f * Time.deltaTime, -60f * Time.deltaTime));
-            changedAngle += 60f * Time.deltaTime;
-            */
-            if (changedAngle >= 90f)
+            if (transform.localEulerAngles.x == 90f && transform.localEulerAngles.z == 0)
             {
                 continueFlag = false;
             }
         }
-	}
+    }
 }
