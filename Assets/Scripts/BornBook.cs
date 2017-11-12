@@ -31,13 +31,11 @@ public class BornBook : MonoBehaviour {
             totalTime += Time.deltaTime;
             float angleX = Mathf.LerpAngle(minAngleX, maxAngleX, totalTime);
             float angleZ = Mathf.LerpAngle(minAngleZ, maxAngleZ, totalTime);
-            Debug.Log(totalTime);
             transform.eulerAngles = new Vector3(angleX, 180, angleZ);
-            /*
             if (transform.localEulerAngles.x == 90f && transform.localEulerAngles.z == 0)
             {
                 continueFlag = false;
-            }*/
+            }
         }
     }
 }
