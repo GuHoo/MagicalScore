@@ -6,11 +6,19 @@ using UnityEngine.UI;
 
 public class ReadScoreViewController : MonoBehaviour {
 
-	public GameObject toggleScrollTitlePrerfab;
-	public GameObject content;
+	private GameObject toggleScrollTitlePrerfab;
+    private GameObject scoreBookPrerfab;
+    private GameObject viewport;
+	private GameObject content;
+    public Texture testTexture;
+
 
 	void Start () {
-		SetScoreTitle ();
+        toggleScrollTitlePrerfab = (GameObject)Resources.Load("Prefabs/ToggleScrollTitle");
+        scoreBookPrerfab = (GameObject)Resources.Load("Prefabs/ScoreBook");
+        viewport = this.gameObject.transform.Find("Scroll View").gameObject.transform.Find("Viewport").gameObject;
+        content = viewport.transform.Find("Content").gameObject;
+        SetScoreTitle ();
 	}
 
 	void Update () {
@@ -21,7 +29,7 @@ public class ReadScoreViewController : MonoBehaviour {
         this.gameObject.SetActive (false);
 	}
 
-	public void SetScoreTitle () {
+	private void SetScoreTitle () {
 		GameObject toggleScrollTitleInstance;
 		DirectoryInfo directoryInfo = new DirectoryInfo(Application.persistentDataPath + "/Score");
         // 楽譜の数だけインスタンス作成
@@ -34,7 +42,7 @@ public class ReadScoreViewController : MonoBehaviour {
         }
 	}
 
-	public void GetScoreImage () {
+	public void GetScoreImage() {
 		DirectoryInfo directoryInfo = new DirectoryInfo(Application.persistentDataPath + "/Score");
 
 		for(int i = 0; i < directoryInfo.GetDirectories ().Length; i++) { // Score下のディレクトリ
@@ -45,4 +53,25 @@ public class ReadScoreViewController : MonoBehaviour {
 			}
 		}
 	}
+
+    public void clickButtonSelectScrole () {
+        GameObject scoreBookInstance = Instantiate(scoreBookPrerfab, new Vector3(0, 1, 1), Quaternion.Euler(0, 180, 90));
+        GameObject book = scoreBookInstance.transform.Find("Book").gameObject;
+
+
+        // ページのテクスチャを探し出して貼り付ける
+        for (int i = 0; i < book.GetComponent<Renderer>().materials.Length; i++) {
+            //Debug.Log(":" +  book.GetComponent<Renderer>().materials[i].name + ":");
+            if (book.GetComponent<Renderer>().materials[i].name == "PageSpaceR (Instance)") {
+                book.GetComponent<Renderer>().materials[i].mainTexture = testTexture;
+            }
+        }
+        this.gameObject.SetActive(false);
+
+
+
+
+
+
+    }
 }
