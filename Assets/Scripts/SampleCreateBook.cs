@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SampleCreateBook : MonoBehaviour {
 
-    private GameObject scoreBookPrerfab;
-
     // Use this for initialization
     void Start () {
 		
@@ -16,8 +14,8 @@ public class SampleCreateBook : MonoBehaviour {
         //Debug.Log(animator.GetCurrentAnimatorStateInfo(0).normalizedTime.ToString());
         if (Input.GetKeyDown(KeyCode.A))
         {
-            scoreBookPrerfab = (GameObject)Resources.Load("Prefabs/ScoreBook");
-            GameObject scoreBookInstance = Instantiate(scoreBookPrerfab, new Vector3(0, 0, 0), Quaternion.Euler(0, 180, 90));
+            GameObject scoreBookPrerfab = (GameObject)Resources.Load("Prefabs/ScoreBook");
+            Instantiate(scoreBookPrerfab, new Vector3(0, 1, 1), Quaternion.Euler(0, 180, 90));
         }
     }
 }
