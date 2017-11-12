@@ -24,13 +24,14 @@ public class ReadScoreViewController : MonoBehaviour {
 	public void SetScoreTitle () {
 		GameObject toggleScrollTitleInstance;
 		DirectoryInfo directoryInfo = new DirectoryInfo(Application.persistentDataPath + "/Score");
+        // 楽譜の数だけインスタンス作成
 		for(int i = 0; i < directoryInfo.GetDirectories ().Length; i++) {
 			DirectoryInfo tmpDirInfo = directoryInfo.GetDirectories () [i];
 			toggleScrollTitleInstance = Instantiate(toggleScrollTitlePrerfab);
 			toggleScrollTitleInstance.GetComponentInChildren<Text>().text = tmpDirInfo.Name;
 			toggleScrollTitleInstance.transform.SetParent(content.transform);
-		}
-
+            toggleScrollTitleInstance.GetComponent<Toggle>().group = toggleScrollTitleInstance.GetComponentInParent<ToggleGroup>();
+        }
 	}
 
 	public void GetScoreImage () {
