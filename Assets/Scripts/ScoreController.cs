@@ -19,10 +19,10 @@ public class ScroleController : MonoBehaviour {
 	}
 
 	void Update () {
-		CheckSclole ();
+        ScloleControl ();
 	}
 
-	void CheckSclole () {
+	void ScloleControl() {
         if (canSelectBook)
         {
             inSelectArea = IsInSelectArea();

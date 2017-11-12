@@ -6,5 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/CreateBook.unity
+    guid: f3ae62800adbc8d48837593f60479d89
+  - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: f8ace6a9f75c994449e101be0752db08
