@@ -5,13 +5,11 @@ using UnityEngine;
 public class ScroleController : MonoBehaviour {
 
 	private const float SELECT_AREA_RANGE = 200;
-	private GameObject[] scores;
-	private bool inSelectArea = false;
-	private bool hasFixedJoint = false;
+	private GameObject score;
     private bool canSelectBook = false;
 
 	void Awake () {
-        scores = GameObject.FindGameObjectsWithTag ("Score");
+        score = this.gameObject;
 	}
 
 	void Start () {
@@ -19,50 +17,37 @@ public class ScroleController : MonoBehaviour {
 	}
 
 	void Update () {
-        ScloleControl ();
+        ScoreControl();
 	}
 
-	void ScloleControl() {
-        if (canSelectBook)
-        {
-            inSelectArea = IsInSelectArea();
-            if (!hasFixedJoint)
-            {
-                if (inSelectArea)
-                {
-                    //scores[0].GetComponent<Renderer>().material.color = Color.red;	
-                    if (Input.GetButtonDown("Fire1"))
-                    {
-                        scores[0].AddComponent<FixedJoint>();
-                        scores[0].GetComponent<FixedJoint>().connectedBody = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Rigidbody>();
-                        hasFixedJoint = true;
-                    }
+	void ScoreControl() {
+        if (canSelectBook) {
+            if (IsInSelectArea()) {
+                //scores[0].GetComponent<Renderer>().material.color = Color.red;
+                if(score.GetComponent<FixedJoint>() == null && Input.GetButtonDown("Fire1")) {
+                    score.AddComponent<FixedJoint>();
+                    score.GetComponent<FixedJoint>().connectedBody = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Rigidbody>();
+                }　else {
+                    Destroy(score.GetComponent<FixedJoint>());
                 }
-                else
-                {
-                    //scores [0].GetComponent<Renderer> ().material.color = Color.blue;
-                }
-            }
-            else
-            {
-                if (Input.GetButtonDown("Fire1"))
-                {
-                    Destroy(scores[0].GetComponent<FixedJoint>());
-                    hasFixedJoint = false;
-                }
+            } else {
+                //scores [0].GetComponent<Renderer> ().material.color = Color.blue;
             }
         }
-	}
+    }
 
-	private bool IsInSelectArea () {
+    /// <summary>
+    /// カメラの向いている方向に楽譜があるか
+    /// </summary>
+    private bool IsInSelectArea () {
 		float screenCentorPointX = Screen.width / 2;
 		float screenCentorPointY = Screen.height / 2;
 		float maxSelectAreaX = screenCentorPointX + SELECT_AREA_RANGE / 2;
 		float minSelectAreaX = screenCentorPointX - SELECT_AREA_RANGE / 2;
 		float maxSelectAreaY = screenCentorPointY + SELECT_AREA_RANGE / 2;
 		float minSelectAreaY = screenCentorPointY - SELECT_AREA_RANGE / 2;
-		float scroleScreenPointX = RectTransformUtility.WorldToScreenPoint (Camera.main, scores[0].transform.position).x;
-		float scroleScreenPointY = RectTransformUtility.WorldToScreenPoint (Camera.main, scores[0].transform.position).y;
+		float scroleScreenPointX = RectTransformUtility.WorldToScreenPoint (Camera.main, score.transform.position).x;
+		float scroleScreenPointY = RectTransformUtility.WorldToScreenPoint (Camera.main, score.transform.position).y;
 
 		if (minSelectAreaX <= scroleScreenPointX && scroleScreenPointX <= maxSelectAreaX) {
 			if (minSelectAreaY <= scroleScreenPointY && scroleScreenPointY <= maxSelectAreaY) {
