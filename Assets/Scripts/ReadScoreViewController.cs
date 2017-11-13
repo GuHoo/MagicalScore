@@ -10,14 +10,16 @@ public class ReadScoreViewController : MonoBehaviour {
     private GameObject scoreBookPrerfab;
     private GameObject viewport;
 	private GameObject content;
-    public Texture testTexture;
+    private Texture[] testPapers;
 
 
-	void Start () {
+    void Start() {
         toggleScrollTitlePrerfab = (GameObject)Resources.Load("Prefabs/ToggleScrollTitle");
         scoreBookPrerfab = (GameObject)Resources.Load("Prefabs/ScoreBook");
         viewport = this.gameObject.transform.Find("Scroll View").gameObject.transform.Find("Viewport").gameObject;
         content = viewport.transform.Find("Content").gameObject;
+        // 時間ないので直接ぶち込む
+        testPapers = Resources.LoadAll<Texture>("SampleScore");
         SetScoreTitle ();
 	}
 
@@ -25,10 +27,16 @@ public class ReadScoreViewController : MonoBehaviour {
 
 	}
 
+    /// <summary>
+    /// 戻るボタン
+    /// </summary>
     public void ClickBackButton () {
         this.gameObject.SetActive (false);
 	}
 
+    /// <summary>
+    /// ReadScoreViewのインスタンス作成時にタイトルの初期化
+    /// </summary>
 	private void SetScoreTitle () {
 		GameObject toggleScrollTitleInstance;
 		DirectoryInfo directoryInfo = new DirectoryInfo(Application.persistentDataPath + "/Score");
@@ -54,6 +62,9 @@ public class ReadScoreViewController : MonoBehaviour {
 		}
 	}
 
+    /// <summary>
+    /// 楽譜選択ボタンが押された
+    /// </summary>
     public void clickButtonSelectScrole () {
         GameObject scoreBookInstance = Instantiate(scoreBookPrerfab, new Vector3(0, 1, 1), Quaternion.Euler(0, 180, 90));
         GameObject book = scoreBookInstance.transform.Find("Book").gameObject;
@@ -62,16 +73,12 @@ public class ReadScoreViewController : MonoBehaviour {
         // ページのテクスチャを探し出して貼り付ける
         for (int i = 0; i < book.GetComponent<Renderer>().materials.Length; i++) {
             //Debug.Log(":" +  book.GetComponent<Renderer>().materials[i].name + ":");
-            if (book.GetComponent<Renderer>().materials[i].name == "PageSpaceR (Instance)") {
-                book.GetComponent<Renderer>().materials[i].mainTexture = testTexture;
+            if (book.GetComponent<Renderer>().materials[i].name == "PageSpaceL (Instance)") {
+                book.GetComponent<Renderer>().materials[i].mainTexture = testPapers[0];
+            } else if (book.GetComponent<Renderer>().materials[i].name == "PageSpaceR (Instance)") {
+                book.GetComponent<Renderer>().materials[i].mainTexture = testPapers[1];
             }
         }
         this.gameObject.SetActive(false);
-
-
-
-
-
-
     }
 }
