@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class ScoreSelectModeViewController : MonoBehaviour {
 
-    public GameObject scoreBook;
-    private ScoreController scoreController;
     private GameObject buttonControlBook;
     private GameObject buttonBackStandard;
 
     void Start () {
-        scoreController = scoreBook.GetComponent<ScoreController>();
 		buttonControlBook = transform.Find("ButtonControlBook").gameObject;
         buttonBackStandard = transform.Find("ButtonBackStandard").gameObject;
     }
@@ -37,7 +34,7 @@ public class ScoreSelectModeViewController : MonoBehaviour {
     private void setCanSelectBooks(bool flag) {
         GameObject[] scores = GameObject.FindGameObjectsWithTag("Score");
         for (int i = 0; i < scores.Length; i++) {
-            scores[i].GetComponent<ScoreController>().setCanSelectBook(true);
+            scores[i].GetComponent<BookController>().setCanSelectBook(true);
         }
     }
 }

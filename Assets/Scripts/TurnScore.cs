@@ -27,14 +27,6 @@ public class TurnScore : MonoBehaviour {
         } else if(closeFlag) { // 回転しながら本を閉じる
             turnWhileClosing();
         }
-
-
-        if (Input.GetKeyDown(KeyCode.UpArrow) && GetComponent<TurnScore>().closeFlag == false) {
-            GetComponent<TurnScore>().openFlag = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && GetComponent<TurnScore>().openFlag == false) {
-            GetComponent<TurnScore>().closeFlag = true;
-        }
     }
 
     private void turnWhileOpening () {

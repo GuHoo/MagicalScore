@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScroleController : MonoBehaviour {
-
+public class BookController : MonoBehaviour {
     private const float SELECT_AREA_RANGE = 200;
     private GameObject score;
     private bool canSelectBook = false;
@@ -22,18 +21,15 @@ public class ScroleController : MonoBehaviour {
 
     void ScoreControl() {
         if (canSelectBook) {
-            Debug.Log("llll");
             if (IsInSelectArea()) {
-                Debug.Log("aaa");
                 //scores[0].GetComponent<Renderer>().material.color = Color.red;
                 if (score.GetComponent<FixedJoint>() == null && Input.GetButtonDown("Fire1")) {
                     score.AddComponent<FixedJoint>();
                     score.GetComponent<FixedJoint>().connectedBody = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Rigidbody>();
-                    this.gameObject.GetComponent<TurnScore>().closeFlag = true;
-                }
-                else {
+                    //this.gameObject.GetComponent<TurnScore>().closeFlag = true;
+                } else if (Input.GetButtonDown("Fire1")) {
                     Destroy(score.GetComponent<FixedJoint>());
-                    this.gameObject.GetComponent<TurnScore>().openFlag = true;
+                    //this.gameObject.GetComponent<TurnScore>().openFlag = true;
                 }
             }
             else {
