@@ -66,7 +66,9 @@ public class ReadScoreViewController : MonoBehaviour {
     /// 楽譜選択ボタンが押された
     /// </summary>
     public void clickButtonSelectScrole () {
-        GameObject scoreBookInstance = Instantiate(scoreBookPrerfab, new Vector3(0, 1, 1), Quaternion.Euler(0, 180, 90));
+        GameObject scoreBookInstance = Instantiate(scoreBookPrerfab, new Vector3(0, 1, 2), Quaternion.Euler(0, 180, 90));
+        scoreBookInstance.tag = "Score";
+        scoreBookInstance.transform.localScale = new Vector3(3, 3, 3);
         GameObject book = scoreBookInstance.transform.Find("Book").gameObject;
 
 

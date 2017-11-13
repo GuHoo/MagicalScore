@@ -71,7 +71,6 @@ public class MagicalScoreManager : MonoBehaviour {
 
 	}
 		
-
 	private void PushEscapeKey (){
 
 	}

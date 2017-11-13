@@ -23,13 +23,21 @@ public class ScoreSelectModeViewController : MonoBehaviour {
     {
          buttonControlBook.SetActive(false);
          buttonBackStandard.SetActive(true);
-         scoreController.setCanSelectBook(true);
+        setCanSelectBooks(true);
     }
 
     public void ClickBackStandard()
     {
         buttonBackStandard.SetActive(false);
         buttonControlBook.SetActive(true);
-        scoreController.setCanSelectBook(false);
+        setCanSelectBooks(false);
+    }
+
+    // タグがScoreのオブジェクトのcanSelectBookフラグをセットする
+    private void setCanSelectBooks(bool flag) {
+        GameObject[] scores = GameObject.FindGameObjectsWithTag("Score");
+        for (int i = 0; i < scores.Length; i++) {
+            scores[i].GetComponent<ScoreController>().setCanSelectBook(true);
+        }
     }
 }
